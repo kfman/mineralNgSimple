@@ -15,6 +15,10 @@ import {firebaseConfig} from '../secrets/firebase';
 import {HttpClient, HttpClientModule} from '@angular/common/http';
 import {LoginComponent} from './login/login.component';
 import { NavbarComponent } from './navbar/navbar.component';
+import {MatToolbarModule} from '@angular/material/toolbar';
+import {MatFormFieldModule} from '@angular/material/form-field';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import {MatInputModule} from '@angular/material/input';
 
 @NgModule({
   declarations: [
@@ -33,6 +37,10 @@ import { NavbarComponent } from './navbar/navbar.component';
       firebaseConfig
     ),
     AngularFireDatabaseModule,
+    MatToolbarModule,
+    MatFormFieldModule,
+    NgbModule,
+    MatInputModule,
 
   ],
   providers: [
