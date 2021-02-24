@@ -19,6 +19,9 @@ import {MatToolbarModule} from '@angular/material/toolbar';
 import {MatFormFieldModule} from '@angular/material/form-field';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import {MatInputModule} from '@angular/material/input';
+import {ReactiveFormsModule} from '@angular/forms';
+import {MatButtonModule} from '@angular/material/button';
+import { CollectionComponent } from './collection/collection.component';
 
 @NgModule({
   declarations: [
@@ -26,6 +29,7 @@ import {MatInputModule} from '@angular/material/input';
     HomeComponent,
     LoginComponent,
     NavbarComponent,
+    CollectionComponent,
   ],
   imports: [
     HttpClientModule,
@@ -33,14 +37,16 @@ import {MatInputModule} from '@angular/material/input';
     AppRoutingModule,
     BrowserAnimationsModule,
     ServiceWorkerModule.register('ngsw-worker.js', {enabled: environment.production}),
-    AngularFireModule.initializeApp(
-      firebaseConfig
-    ),
     AngularFireDatabaseModule,
     MatToolbarModule,
     MatFormFieldModule,
     NgbModule,
+    AngularFireModule.initializeApp(
+      firebaseConfig
+    ),
     MatInputModule,
+    ReactiveFormsModule,
+    MatButtonModule,
 
   ],
   providers: [

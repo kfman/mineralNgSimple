@@ -1,0 +1,14 @@
+<p>collection works!</p>
+
+
+<table>
+  <tr>
+    <th>Serial</th>
+    <th>Mineral</th>
+  </tr>
+
+  <tr *ngFor="let sample of samples">
+    <td>{{sample.serial}}</td>
+    <td>{{sample.mineral}}</td>
+  </tr>
+</table>
