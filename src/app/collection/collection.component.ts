@@ -18,14 +18,16 @@ export class CollectionComponent implements OnInit {
 
   ngOnInit(): void {
 
-    this.authService.user.toPromise().then((user) => {
-      if (firebase.auth().currentUser == null) {
-        this.router.navigate(['/login']);
-        return;
-      }
+    this.authService.user.subscribe((user) => {
+      // if (user == null) {
+      //   this.router.navigate(['/login']);
+      //   return;
+      // }
 
       firebase.database().ref(`users/${user.uid}/samples`).once('value').then(value => {
-        console.log(value);
+        console.log('Event fired...');
+        console.log(value.val());
+        this.samples.push(value.val());
       });
     });
   }
