@@ -1,7 +1,8 @@
 import {Component, OnInit} from '@angular/core';
-import * as firebase from 'firebase';
+import {AngularFireDatabase} from 'angularfire2/database';
 import {Router} from '@angular/router';
 import {AuthService} from '../service/auth.service';
+
 
 @Component({
   selector: 'app-collection',
@@ -10,9 +11,11 @@ import {AuthService} from '../service/auth.service';
 })
 export class CollectionComponent implements OnInit {
 
-  samples = new Array<any>();
+  samples: any[];
 
-  constructor(private router: Router, private authService: AuthService) {
+  constructor(private router: Router,
+              private db: AngularFireDatabase,
+              private authService: AuthService) {
 
   }
 
@@ -24,10 +27,10 @@ export class CollectionComponent implements OnInit {
       //   return;
       // }
 
-      firebase.database().ref(`users/${user.uid}/samples`).once('value').then(value => {
+      this.db.list(`users/${user.uid}/samples`).snapshotChanges().subscribe(value => {
         console.log('Event fired...');
-        console.log(value.val());
-        this.samples.push(value.val());
+        console.log(value);
+        this.samples = value;
       });
     });
   }
