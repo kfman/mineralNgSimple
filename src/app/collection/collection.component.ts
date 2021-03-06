@@ -26,8 +26,11 @@ export class CollectionComponent implements OnInit {
 
       firebase.database().ref(`users/${user.uid}/samples`).once('value').then(value => {
         console.log('Event fired...');
-        console.log(value.val());
-        this.samples.push(value.val());
+        console.log(value.child('mineral').key);
+        value.forEach(e => {
+          this.samples.push(e.val());
+          return false;
+        });
       });
     });
   }
